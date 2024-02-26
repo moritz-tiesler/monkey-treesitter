@@ -1,0 +1,12 @@
+==============
+Assign boolean
+==============
+
+let x = true
+
+---
+
+(source_file
+(let_statement
+    (identifier)
+    (boolean)))

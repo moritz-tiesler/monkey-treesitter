@@ -1,0 +1,12 @@
+==============
+Assign constant
+==============
+
+let x = 2
+
+---
+
+(source_file
+(let_statement
+    (identifier)
+    (number)))

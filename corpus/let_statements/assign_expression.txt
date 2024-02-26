@@ -1,0 +1,12 @@
+==============
+Assign identifier 
+==============
+
+let x = b
+
+---
+
+(source_file
+(let_statement
+    (identifier)
+    (identifier)))
