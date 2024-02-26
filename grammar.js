@@ -5,7 +5,8 @@ module.exports = grammar({
         // TODO: add the actual grammar rules
         source_file: $ => repeat($._statement),
         _statement: $ => choice(
-            $.let_statement   
+            $.let_statement,
+            $._expression
         ),
         let_statement: $ => seq(
             'let',
@@ -14,10 +15,23 @@ module.exports = grammar({
             $._expression
         ),
 
-        _expression : $ => choice(
-            $.identifier,
+        _expression: $ => choice(
             $.number,
-            $.boolean
+            $.boolean,
+            $.identifier,
+            $.unary_expression,
+            $.binary_expression,
+            // ...
+          ),
+        
+        unary_expression: $ => prec(3, choice(
+            seq('-', $._expression),
+            seq('!', $._expression),
+          )),
+        
+        binary_expression: $ => choice(
+            prec.left(2, seq($._expression, '*', $._expression)),
+            prec.left(1, seq($._expression, '+', $._expression)),
         ),
 
         number: $ => /\d+/,

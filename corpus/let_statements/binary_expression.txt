@@ -1,0 +1,14 @@
+===
+Binary expresssion
+===
+
+a + 3
+4 * 4
+
+----
+
+(source_file
+    (binary_expression
+        (identifier) (number))
+    (binary_expression
+        (number) (number)))
