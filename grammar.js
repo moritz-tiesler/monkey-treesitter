@@ -21,14 +21,17 @@ module.exports = grammar({
             $.identifier,
             $.unary_expression,
             $.binary_expression,
+            $._parenth
             // ...
           ),
         
-        unary_expression: $ => prec(3, choice(
+        unary_expression: $ => prec(4, choice(
             seq('-', $._expression),
             seq('!', $._expression),
           )),
         
+        _parenth: $ => prec.left(3, seq('(', $._expression, ')')),
+
         binary_expression: $ => choice(
             prec.left(2, seq($._expression, '*', $._expression)),
             prec.left(1, seq($._expression, '+', $._expression)),

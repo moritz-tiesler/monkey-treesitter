@@ -18,9 +18,10 @@ Precedence
 
 -3 + 4
 a + 4 * 1 + !a 
+(a + a) * 3
+1 + (a + b) + 3
 
 ----
-
 
 (source_file
     (binary_expression
@@ -33,13 +34,27 @@ a + 4 * 1 + !a
             (binary_expression
                 (number) (number)))
         (unary_expression
-            (identifier))))
+            (identifier)))
+    (binary_expression
+        (binary_expression
+            (identifier)
+            (identifier))
+        (number))
+    (binary_expression
+        (binary_expression
+            (number)
+            (binary_expression
+                (identifier)
+                (identifier)))
+        (number)))
 ===
 Unary expresssion
 ===
 
 -3
 !a
+-(3 + 3)
+-3 + 2
 
 ---
 
@@ -47,4 +62,12 @@ Unary expresssion
     (unary_expression
         (number))
     (unary_expression
-        (identifier)))
+        (identifier))
+    (unary_expression
+        (binary_expression
+            (number)
+            (number)))
+    (binary_expression
+        (unary_expression
+            (number))
+        (number)))
