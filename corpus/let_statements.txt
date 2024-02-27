@@ -1,0 +1,38 @@
+==============
+Assign boolean
+==============
+
+let x = true
+
+---
+
+(source_file
+(let_statement
+    (identifier)
+    (boolean)))
+
+====
+Assign number
+===
+
+let x = 2
+
+---
+
+(source_file
+(let_statement
+    (identifier)
+    (number)))
+
+==============
+Assign identifier 
+==============
+
+let x = b
+
+---
+
+(source_file
+(let_statement
+    (identifier)
+    (identifier)))

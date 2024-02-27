@@ -1,0 +1,50 @@
+===
+Binary expresssion
+===
+
+a + 3
+4 * 4
+
+----
+
+(source_file
+    (binary_expression
+        (identifier) (number))
+    (binary_expression
+        (number) (number)))
+===
+Precedence
+===
+
+-3 + 4
+a + 4 * 1 + !a 
+
+----
+
+
+(source_file
+    (binary_expression
+        (unary_expression
+            (number))
+        (number))
+    (binary_expression
+        (binary_expression
+            (identifier)
+            (binary_expression
+                (number) (number)))
+        (unary_expression
+            (identifier))))
+===
+Unary expresssion
+===
+
+-3
+!a
+
+---
+
+(source_file 
+    (unary_expression
+        (number))
+    (unary_expression
+        (identifier)))
