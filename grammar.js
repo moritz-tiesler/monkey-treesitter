@@ -1,3 +1,16 @@
+const
+  PREC = {
+    LOWEST : 0,
+	EQUALS : 1,
+	LESSGREATER : 2,
+	SUM : 3,
+	PRODUCT : 4, 
+	PREFIX : 5, 
+	METHOD : 6,
+	CALL : 7,
+	INDEX : 8,
+  }
+
 module.exports = grammar({
     name: 'monkeylang',
 
@@ -25,16 +38,16 @@ module.exports = grammar({
             // ...
           ),
         
-        unary_expression: $ => prec(4, choice(
+        unary_expression: $ => prec(PREC.PREFIX, choice(
             seq('-', $._expression),
             seq('!', $._expression),
           )),
         
-        _parenth: $ => prec.left(3, seq('(', $._expression, ')')),
+        _parenth: $ => prec.left(PREC.CALL, seq('(', $._expression, ')')),
 
         binary_expression: $ => choice(
-            prec.left(2, seq($._expression, '*', $._expression)),
-            prec.left(1, seq($._expression, '+', $._expression)),
+            prec.left(PREC.PRODUCT, seq($._expression, '*', $._expression)),
+            prec.left(PREC.SUM, seq($._expression, '+', $._expression)),
         ),
 
         number: $ => /\d+/,
