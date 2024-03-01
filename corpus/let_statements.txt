@@ -51,7 +51,7 @@ let func = fn(a, b) { a + b; };
             (parameters
                 (identifier)
                 (identifier))
-            (block
+            (body
                 (binary_expression
                     (identifier)
                     (identifier))))))
