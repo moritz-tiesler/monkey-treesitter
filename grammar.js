@@ -46,6 +46,8 @@ module.exports = grammar({
       $.binary_expression,
       $._grouped_expression,
       $.function,
+      $.array_literal,
+      $.index_expression,
       // ...
     ),
 
@@ -121,6 +123,20 @@ module.exports = grammar({
       $._expression,
       optional(",")
     ),
+    
+    array_literal : $ => seq(
+      "[",
+      optional($._argument_list),
+      "]"
+    ),
+    
+    index_expression : $ => prec(PREC.INDEX, seq(
+      $._expression,
+      "[",
+      $._expression,
+      "]"
+    )),
+
 
     unary_expression: $ => prec(PREC.PREFIX, choice(
       seq('-', $._expression),
