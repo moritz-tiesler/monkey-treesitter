@@ -212,3 +212,32 @@ myArr[1+a];
             (number)
             (identifier))))
 
+
+===
+IIFE
+===
+
+fn(a) {a;}(1);
+(fn(a, b) {a;})(1, b);
+
+---
+
+(source_file
+    (function_call
+        (function
+            (parameters
+                (identifier))
+            (body
+                (identifier)))
+        (arguments
+            (number)))
+    (function_call
+        (function
+            (parameters
+                (identifier)
+                (identifier))
+            (body
+                (identifier)))
+        (arguments
+            (number)
+            (identifier))))
