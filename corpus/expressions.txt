@@ -71,3 +71,31 @@ Unary expresssion
         (unary_expression
             (number))
         (number)))
+
+===
+Funtion literals
+===
+
+fn(a, b) { a + b }
+fn(a, b) {return a + b}
+
+---
+
+(source_file
+    (function
+        (parameters
+            (identifier)
+            (identifier))
+        (block
+            (binary_expression
+                (identifier)
+                (identifier))))
+    (function
+            (parameters
+                (identifier)
+                (identifier))
+            (block
+                (return_statement
+                    (binary_expression
+                        (identifier)
+                        (identifier))))))

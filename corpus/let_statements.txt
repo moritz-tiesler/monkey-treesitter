@@ -36,3 +36,22 @@ let x = b
 (let_statement
     (identifier)
     (identifier)))
+    
+===
+Assign function literal
+===
+
+let func = fn(a, b) { a + b }
+
+---
+(source_file
+    (let_statement
+        (identifier)
+        (function
+            (parameters
+                (identifier)
+                (identifier))
+            (block
+                (binary_expression
+                    (identifier)
+                    (identifier))))))
