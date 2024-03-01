@@ -48,6 +48,7 @@ module.exports = grammar({
       $.function,
       $.array_literal,
       $.index_expression,
+      $.hash_literal
       // ...
     ),
 
@@ -128,6 +129,21 @@ module.exports = grammar({
       "[",
       optional($._argument_list),
       "]"
+    ),
+    
+    hash_literal : $ => prec(PREC.PREFIX, seq(
+      "{",
+      optional($._kv_pairs),
+      "}"
+    )),
+    
+    _kv_pairs : $ => repeat1($.kv_pair),
+
+    kv_pair : $ => seq(
+      $._expression,
+      ":",
+      $._expression,
+      optional(",")
     ),
     
     index_expression : $ => prec(PREC.INDEX, seq(

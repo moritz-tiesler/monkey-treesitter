@@ -28,6 +28,10 @@
           "named": true
         },
         {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -76,6 +80,10 @@
         },
         {
           "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
           "named": true
         },
         {
@@ -130,6 +138,10 @@
           "named": true
         },
         {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -178,6 +190,10 @@
         },
         {
           "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
           "named": true
         },
         {
@@ -263,6 +279,10 @@
           "named": true
         },
         {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -280,6 +300,21 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "hash_literal",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "kv_pair",
           "named": true
         }
       ]
@@ -311,6 +346,65 @@
         },
         {
           "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "method_call",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "kv_pair",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "function",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
           "named": true
         },
         {
@@ -362,6 +456,10 @@
         },
         {
           "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
           "named": true
         },
         {
@@ -450,6 +548,10 @@
           "named": true
         },
         {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -498,6 +600,10 @@
         },
         {
           "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
           "named": true
         },
         {
@@ -560,6 +666,10 @@
           "named": true
         },
         {
+          "type": "hash_literal",
+          "named": true
+        },
+        {
           "type": "identifier",
           "named": true
         },
@@ -612,6 +722,10 @@
   },
   {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": ":",
     "named": false
   },
   {
