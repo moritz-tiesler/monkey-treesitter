@@ -18,14 +18,21 @@ module.exports = grammar({
     source_file: $ => repeat($._statement),
     _statement: $ => choice(
       $.let_statement,
-      $._expression,
+      $._expression_statement,
       $.return_statement
     ),
+
     let_statement: $ => seq(
       'let',
       $.identifier,
       '=',
-      $._expression
+      $._expression,
+      ";"
+    ),
+    
+    _expression_statement: $ => seq(
+      $._expression,
+      ";"
     ),
 
     _expression: $ => choice(
@@ -67,8 +74,7 @@ module.exports = grammar({
     block: $ => seq(
       "{",
       optional($._statement_list),
-      "}"
-
+      "}",
     ),
 
     _parameter: $ => seq(
@@ -78,7 +84,8 @@ module.exports = grammar({
     
     return_statement: $ => seq(
       "return",
-      $._expression
+      $._expression,
+      ";"
     ),
 
     function_call : $ => prec(PREC.CALL,seq(

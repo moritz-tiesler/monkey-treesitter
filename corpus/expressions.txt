@@ -2,8 +2,8 @@
 Binary expresssion
 ===
 
-a + 3
-4 * 4
+a + 3;
+4 * 4;
 
 ----
 
@@ -16,10 +16,10 @@ a + 3
 Precedence
 ===
 
-let x = -3 + 4
-let y = a + 4 * 1 + !a
-let z = (a + a) * 3
-let v = 1 + (a + b) + 3
+let x = -3 + 4;
+let y = a + 4 * 1 + !a;
+let z = (a + a) * 3;
+let v = 1 + (a + b) + 3;
 
 ----
 
@@ -59,10 +59,10 @@ let v = 1 + (a + b) + 3
 Unary expresssion
 ===
 
--3
-!a
--(3 + 3)
--3 + 2
+-3;
+!a;
+-(3 + 3);
+-3 + 2;
 
 ---
 
@@ -84,10 +84,10 @@ Unary expresssion
 Funtion literals
 ===
 
-fn(a, b) { a + b }
+fn(a, b) { a + b; };
 fn(a, b) {
-    return a + b
-}
+    return a + b;
+};
 
 ---
 

@@ -2,7 +2,7 @@
 Assign boolean
 ==============
 
-let x = true
+let x = true;
 
 ---
 
@@ -15,7 +15,7 @@ let x = true
 Assign number
 ===
 
-let x = 2
+let x = 2;
 
 ---
 
@@ -28,7 +28,7 @@ let x = 2
 Assign identifier 
 ==============
 
-let x = b
+let x = b;
 
 ---
 
@@ -41,7 +41,7 @@ let x = b
 Assign function literal
 ===
 
-let func = fn(a, b) { a + b }
+let func = fn(a, b) { a + b; };
 
 ---
 (source_file
@@ -60,9 +60,9 @@ let func = fn(a, b) { a + b }
 Function Calls
 ===
 
-let z = func(a, b)
-let z = func(1 + 1, 2 + 2)
-let z = myFunc(a, b) + 4
+let z = func(a, b);
+let z = func(1 + 1, 2 + 2);
+let z = myFunc(a, b) + 4;
 
 ---
 
