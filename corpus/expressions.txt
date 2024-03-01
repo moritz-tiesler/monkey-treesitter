@@ -280,6 +280,7 @@ Hash Index
 {1: 2}[1];
 {1: 2}[true];
 {1: 2}[1+1];
+{1: 2}["key"];
 
 ---
 
@@ -303,4 +304,19 @@ Hash Index
                     (number)))
             (binary_expression
                 (number)
-                (number))))
+                (number)))
+     (index_expression
+            (hash_literal
+                (kv_pair
+                    (number)
+                    (number)))
+            (string_literal)))         
+
+===
+String literals
+===
+"abc$";
+---
+
+(source_file
+    (string_literal))

@@ -48,7 +48,8 @@ module.exports = grammar({
       $.function,
       $.array_literal,
       $.index_expression,
-      $.hash_literal
+      $.hash_literal,
+      $.string_literal,
       // ...
     ),
 
@@ -152,6 +153,12 @@ module.exports = grammar({
       $._expression,
       "]"
     )),
+    
+    string_literal : $ => seq(
+      '"',
+      optional($._string),
+      '"'
+    ),
 
 
     unary_expression: $ => prec(PREC.PREFIX, choice(
@@ -161,6 +168,7 @@ module.exports = grammar({
 
     number: $ => /\d+/,
     boolean: $ => /(true|false)/,
+    _string : $ => /[^\s^"]+/,
     identifier: $ => /[a-zA-Z_]+/,
   }
 });

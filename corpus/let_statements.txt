@@ -55,4 +55,17 @@ let func = fn(a, b) { a + b; };
                 (binary_expression
                     (identifier)
                     (identifier))))))
+                    
+===
+Assign string literal
+===
+
+let str = "ab12_&%§";
+
+---
+
+(source_file
+    (let_statement
+        (identifier)
+        (string_literal)))
 
