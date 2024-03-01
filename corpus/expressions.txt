@@ -272,3 +272,35 @@ Hash literal
                 (number)
                 (number))
             (number))))
+
+===
+Hash Index
+===
+
+{1: 2}[1];
+{1: 2}[true];
+{1: 2}[1+1];
+
+---
+
+(source_file
+    (index_expression
+        (hash_literal
+            (kv_pair
+                (number)
+                (number)))
+        (number))
+    (index_expression
+            (hash_literal
+                (kv_pair
+                    (number)
+                    (number)))
+            (boolean))
+    (index_expression
+            (hash_literal
+                (kv_pair
+                    (number)
+                    (number)))
+            (binary_expression
+                (number)
+                (number))))
