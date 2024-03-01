@@ -16,37 +16,45 @@ a + 3
 Precedence
 ===
 
--3 + 4
-a + 4 * 1 + !a 
-(a + a) * 3
-1 + (a + b) + 3
+let x = -3 + 4
+let y = a + 4 * 1 + !a
+let z = (a + a) * 3
+let v = 1 + (a + b) + 3
 
 ----
 
 (source_file
-    (binary_expression
-        (unary_expression
-            (number))
-        (number))
-    (binary_expression
+    (let_statement
+        (identifier)
         (binary_expression
-            (identifier)
-            (binary_expression
-                (number) (number)))
-        (unary_expression
-            (identifier)))
-    (binary_expression
+            (unary_expression
+                (number))
+            (number)))
+    (let_statement
+        (identifier)
         (binary_expression
-            (identifier)
-            (identifier))
-        (number))
-    (binary_expression
-        (binary_expression
-            (number)
             (binary_expression
                 (identifier)
-                (identifier)))
-        (number)))
+                (binary_expression
+                    (number) (number)))
+            (unary_expression
+                (identifier))))
+    (let_statement
+        (identifier)
+        (binary_expression
+            (binary_expression
+                (identifier)
+                (identifier))
+            (number)))
+    (let_statement
+        (identifier)
+        (binary_expression
+            (binary_expression
+                (number)
+                (binary_expression
+                    (identifier)
+                    (identifier)))
+            (number))))
 ===
 Unary expresssion
 ===
@@ -77,7 +85,9 @@ Funtion literals
 ===
 
 fn(a, b) { a + b }
-fn(a, b) {return a + b}
+fn(a, b) {
+    return a + b
+}
 
 ---
 
@@ -99,3 +109,7 @@ fn(a, b) {return a + b}
                     (binary_expression
                         (identifier)
                         (identifier))))))
+                        
+
+
+

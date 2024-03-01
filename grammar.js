@@ -15,7 +15,6 @@ module.exports = grammar({
   name: 'monkeylang',
 
   rules: {
-    // TODO: add the actual grammar rules
     source_file: $ => repeat($._statement),
     _statement: $ => choice(
       $.let_statement,
@@ -33,24 +32,21 @@ module.exports = grammar({
       $.number,
       $.boolean,
       $.identifier,
+      $.function_call,
       $.unary_expression,
       $.binary_expression,
-      $._parenth,
-      $.function
+      $._grouped_expression,
+      $.function,
       // ...
     ),
 
-    unary_expression: $ => prec(PREC.PREFIX, choice(
-      seq('-', $._expression),
-      seq('!', $._expression),
-    )),
-
-    _parenth: $ => prec.left(PREC.CALL, seq('(', $._expression, ')')),
 
     binary_expression: $ => choice(
       prec.left(PREC.PRODUCT, seq($._expression, '*', $._expression)),
       prec.left(PREC.SUM, seq($._expression, '+', $._expression)),
     ),
+    
+    _grouped_expression : $ => prec.left(PREC.CALL, seq('(', $._expression, ')')),
 
     function: $ => seq(
       "fn",
@@ -84,6 +80,34 @@ module.exports = grammar({
       "return",
       $._expression
     ),
+
+    function_call : $ => prec(PREC.CALL,seq(
+      $._expression,
+      $.arguments
+    )), 
+    
+    arguments: $ => seq(
+      "(",
+      optional($._argument_list),
+      ")"
+    ),
+    
+    _argument_list : $ => repeat1($._argument),
+    
+    _argument : $ => seq(
+      $._expression,
+      optional(",")
+    ),
+    
+    _expression_list : $ => seq(
+      $._expression,
+      optional(",")
+    ),
+
+    unary_expression: $ => prec(PREC.PREFIX, choice(
+      seq('-', $._expression),
+      seq('!', $._expression),
+    )),
 
     number: $ => /\d+/,
     boolean: $ => /(true|false)/,

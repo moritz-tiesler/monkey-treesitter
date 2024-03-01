@@ -55,3 +55,42 @@ let func = fn(a, b) { a + b }
                 (binary_expression
                     (identifier)
                     (identifier))))))
+
+===
+Function Calls
+===
+
+let z = func(a, b)
+let z = func(1 + 1, 2 + 2)
+let z = myFunc(a, b) + 4
+
+---
+
+(source_file
+    (let_statement
+        (identifier)
+        (function_call
+            (identifier)
+            (arguments
+                (identifier)
+                (identifier))))
+    (let_statement
+        (identifier)
+        (function_call
+            (identifier)
+            (arguments
+                (binary_expression
+                    (number)
+                    (number))
+                (binary_expression
+                    (number)
+                    (number)))))
+    (let_statement
+        (identifier)
+        (binary_expression
+            (function_call
+                (identifier)
+                (arguments
+                    (identifier)
+                    (identifier)))
+            (number))))
