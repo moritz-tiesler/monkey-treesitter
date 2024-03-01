@@ -16,45 +16,37 @@ a + 3;
 Precedence
 ===
 
-let x = -3 + 4;
-let y = a + 4 * 1 + !a;
-let z = (a + a) * 3;
-let v = 1 + (a + b) + 3;
+-3 + 4;
+a + 4 * 1 + !a;
+(a + a) * 3;
+1 + (a + b) + 3;
 
 ----
 
 (source_file
-    (let_statement
-        (identifier)
+    (binary_expression
+        (unary_expression
+            (number))
+        (number))
+    (binary_expression
         (binary_expression
-            (unary_expression
-                (number))
-            (number)))
-    (let_statement
-        (identifier)
+            (identifier)
+            (binary_expression
+                (number) (number)))
+        (unary_expression
+            (identifier)))
+    (binary_expression
         (binary_expression
+            (identifier)
+            (identifier))
+        (number))
+    (binary_expression
+        (binary_expression
+            (number)
             (binary_expression
                 (identifier)
-                (binary_expression
-                    (number) (number)))
-            (unary_expression
-                (identifier))))
-    (let_statement
-        (identifier)
-        (binary_expression
-            (binary_expression
-                (identifier)
-                (identifier))
-            (number)))
-    (let_statement
-        (identifier)
-        (binary_expression
-            (binary_expression
-                (number)
-                (binary_expression
-                    (identifier)
-                    (identifier)))
-            (number))))
+                (identifier)))
+        (number)))
 ===
 Unary expresssion
 ===
@@ -110,6 +102,73 @@ fn(a, b) {
                         (identifier)
                         (identifier))))))
                         
+===
+Method Calls
+===
+
+arr.first();
+arr.push(1);
+arr.push(1, myVar, (1+2));
+
+---
+
+(source_file
+    (method_call
+            (identifier)
+            (function_call
+                (identifier)
+                (arguments)))
+    (method_call
+        (identifier)
+        (function_call
+            (identifier)
+            (arguments
+                (number))))
+    (method_call
+        (identifier)
+        (function_call
+            (identifier)
+            (arguments
+                (number)
+                (identifier)
+                (binary_expression
+                    (number)
+                    (number))))))
+
+===
+Function Calls
+===
+
+func(a, b);
+func(1 + 1, 2 + 2);
+myFunc(a, b) + 4;
+
+---
+
+(source_file
+    (function_call
+        (identifier)
+        (arguments
+            (identifier)
+            (identifier)))
+    (function_call
+        (identifier)
+        (arguments
+            (binary_expression
+                (number)
+                (number))
+            (binary_expression
+                (number)
+                (number))))
+    (binary_expression
+        (function_call
+            (identifier)
+            (arguments
+                (identifier)
+                (identifier)))
+        (number)))
+
+
 
 
 

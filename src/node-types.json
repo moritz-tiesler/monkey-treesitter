@@ -28,6 +28,10 @@
           "named": true
         },
         {
+          "type": "method_call",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -64,6 +68,10 @@
         },
         {
           "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "method_call",
           "named": true
         },
         {
@@ -107,6 +115,10 @@
         },
         {
           "type": "let_statement",
+          "named": true
+        },
+        {
+          "type": "method_call",
           "named": true
         },
         {
@@ -176,6 +188,10 @@
           "named": true
         },
         {
+          "type": "method_call",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -215,11 +231,34 @@
           "named": true
         },
         {
+          "type": "method_call",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
         {
           "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "method_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
           "named": true
         }
       ]
@@ -269,6 +308,10 @@
           "named": true
         },
         {
+          "type": "method_call",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -309,6 +352,10 @@
         },
         {
           "type": "let_statement",
+          "named": true
+        },
+        {
+          "type": "method_call",
           "named": true
         },
         {
@@ -355,6 +402,10 @@
           "named": true
         },
         {
+          "type": "method_call",
+          "named": true
+        },
+        {
           "type": "number",
           "named": true
         },
@@ -391,6 +442,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {

@@ -41,6 +41,7 @@ module.exports = grammar({
       $.boolean,
       $.identifier,
       $.function_call,
+      $.method_call,
       $.unary_expression,
       $.binary_expression,
       $._grouped_expression,
@@ -96,6 +97,12 @@ module.exports = grammar({
       $._expression,
       $.arguments
     )), 
+    
+    method_call : $ => prec(PREC.METHOD, seq(
+      $.identifier,
+      ".",
+      $.function_call
+    )),
     
     arguments: $ => seq(
       "(",
