@@ -7,7 +7,7 @@ let x = true;
 ---
 
 (source_file
-(let_statement
+(value_assignment
     (identifier)
     (boolean)))
 
@@ -20,7 +20,7 @@ let x = 2;
 ---
 
 (source_file
-(let_statement
+(value_assignment
     (identifier)
     (number)))
 
@@ -33,7 +33,7 @@ let x = b;
 ---
 
 (source_file
-(let_statement
+(value_assignment
     (identifier)
     (identifier)))
     
@@ -45,7 +45,7 @@ let func = fn(a, b) { a + b; };
 
 ---
 (source_file
-    (let_statement
+    (function_declaration
         (identifier)
         (function
             (parameters
@@ -65,7 +65,7 @@ let str = "ab12_&%§";
 ---
 
 (source_file
-    (let_statement
+    (value_assignment
         (identifier)
         (string_literal)))
 

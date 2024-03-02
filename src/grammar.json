@@ -13,7 +13,7 @@
       "members": [
         {
           "type": "SYMBOL",
-          "name": "let_statement"
+          "name": "_let_statement"
         },
         {
           "type": "SYMBOL",
@@ -29,7 +29,20 @@
         }
       ]
     },
-    "let_statement": {
+    "_let_statement": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "value_assignment"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "function_declaration"
+        }
+      ]
+    },
+    "value_assignment": {
       "type": "SEQ",
       "members": [
         {
@@ -53,6 +66,35 @@
           "value": ";"
         }
       ]
+    },
+    "function_declaration": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "STRING",
+            "value": "let"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "identifier"
+          },
+          {
+            "type": "STRING",
+            "value": "="
+          },
+          {
+            "type": "SYMBOL",
+            "name": "function"
+          },
+          {
+            "type": "STRING",
+            "value": ";"
+          }
+        ]
+      }
     },
     "_expression_statement": {
       "type": "SEQ",

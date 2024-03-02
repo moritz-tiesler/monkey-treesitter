@@ -13,23 +13,39 @@ const
 
 module.exports = grammar({
   name: 'monkeylang',
+  
 
   rules: {
     source_file: $ => repeat($._statement),
     _statement: $ => choice(
-      $.let_statement,
+      $._let_statement,
       $._expression_statement,
       $.return_statement,
       $._block_statement
     ),
 
-    let_statement: $ => seq(
+    
+    _let_statement: $ => choice(
+      $.value_assignment,
+      $.function_declaration
+    ),
+
+    value_assignment: $ => seq(
       'let',
       $.identifier,
       '=',
       $._expression,
       ";"
     ),
+    
+    function_declaration: $ => prec(1, seq(
+      'let',
+      $.identifier,
+      "=",
+      $.function,
+      ";"
+    )),
+
     
     _expression_statement: $ => seq(
       $._expression,
