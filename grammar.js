@@ -13,7 +13,10 @@ const
 
 module.exports = grammar({
   name: 'monkeylang',
-  
+
+  conflicts : $ => [
+    [$.function_name, $.value_name]
+  ],
 
   rules: {
     source_file: $ => repeat($._statement),
@@ -26,25 +29,31 @@ module.exports = grammar({
 
     
     _let_statement: $ => choice(
+      $.function_declaration,
       $.value_assignment,
-      $.function_declaration
+    ),
+    
+    
+    function_declaration: $ => seq(
+      'let',
+      $.function_name,
+      "=",
+      $.function,
+      ";"
     ),
 
+    function_name: $ => $._identifier,
+    
     value_assignment: $ => seq(
       'let',
-      $.identifier,
+      $.value_name,
       '=',
       $._expression,
       ";"
     ),
-    
-    function_declaration: $ => prec(1, seq(
-      'let',
-      $.identifier,
-      "=",
-      $.function,
-      ";"
-    )),
+
+    value_name: $ => $._identifier,
+
 
     
     _expression_statement: $ => seq(
@@ -55,7 +64,7 @@ module.exports = grammar({
     _expression: $ => choice(
       $.number,
       $.boolean,
-      $.identifier,
+      $.value_name,
       $.function_call,
       $.method_call,
       $.unary_expression,
@@ -89,10 +98,10 @@ module.exports = grammar({
       ')'
     ),
 
-    _parameter_list: $ => repeat1($._parameter),
+    _parameter_list: $ => repeat1($.parameter),
 
-    _parameter: $ => seq(
-      $.identifier,
+    parameter: $ => seq(
+      $._identifier,
       optional(",")
     ),
 
@@ -119,7 +128,7 @@ module.exports = grammar({
     )), 
     
     method_call : $ => prec(PREC.METHOD, seq(
-      $.identifier,
+      $._expression,
       ".",
       $.function_call
     )),
@@ -177,6 +186,7 @@ module.exports = grammar({
     ),
 
 
+
     unary_expression: $ => prec(PREC.PREFIX, choice(
       seq('-', $._expression),
       seq('!', $._expression),
@@ -185,6 +195,6 @@ module.exports = grammar({
     number: $ => /\d+/,
     boolean: $ => /(true|false)/,
     _string : $ => /[^\s^"]+/,
-    identifier: $ => /[a-zA-Z_]+/,
+    _identifier: $ => /[a-zA-Z_]+/,
   }
 });

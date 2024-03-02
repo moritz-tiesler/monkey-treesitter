@@ -32,10 +32,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -53,6 +49,10 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_name",
           "named": true
         }
       ]
@@ -91,10 +91,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -112,6 +108,10 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_name",
           "named": true
         }
       ]
@@ -150,10 +150,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -171,6 +167,10 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_name",
           "named": true
         }
       ]
@@ -213,10 +213,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -242,6 +238,10 @@
         },
         {
           "type": "value_assignment",
+          "named": true
+        },
+        {
+          "type": "value_name",
           "named": true
         }
       ]
@@ -303,10 +303,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -325,6 +321,10 @@
         {
           "type": "unary_expression",
           "named": true
+        },
+        {
+          "type": "value_name",
+          "named": true
         }
       ]
     }
@@ -342,11 +342,16 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "function_name",
           "named": true
         }
       ]
     }
+  },
+  {
+    "type": "function_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "hash_literal",
@@ -396,10 +401,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -417,6 +418,10 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_name",
           "named": true
         }
       ]
@@ -455,7 +460,62 @@
           "named": true
         },
         {
-          "type": "identifier",
+          "type": "index_expression",
+          "named": true
+        },
+        {
+          "type": "method_call",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "string_literal",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "method_call",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "array_literal",
+          "named": true
+        },
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "function",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "hash_literal",
           "named": true
         },
         {
@@ -477,28 +537,18 @@
         {
           "type": "unary_expression",
           "named": true
+        },
+        {
+          "type": "value_name",
+          "named": true
         }
       ]
     }
   },
   {
-    "type": "method_call",
+    "type": "parameter",
     "named": true,
-    "fields": {},
-    "children": {
-      "multiple": true,
-      "required": true,
-      "types": [
-        {
-          "type": "function_call",
-          "named": true
-        },
-        {
-          "type": "identifier",
-          "named": true
-        }
-      ]
-    }
+    "fields": {}
   },
   {
     "type": "parameters",
@@ -509,7 +559,7 @@
       "required": false,
       "types": [
         {
-          "type": "identifier",
+          "type": "parameter",
           "named": true
         }
       ]
@@ -548,10 +598,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -569,6 +615,10 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_name",
           "named": true
         }
       ]
@@ -611,10 +661,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -640,6 +686,10 @@
         },
         {
           "type": "value_assignment",
+          "named": true
+        },
+        {
+          "type": "value_name",
           "named": true
         }
       ]
@@ -683,10 +733,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -704,6 +750,10 @@
         },
         {
           "type": "unary_expression",
+          "named": true
+        },
+        {
+          "type": "value_name",
           "named": true
         }
       ]
@@ -742,10 +792,6 @@
           "named": true
         },
         {
-          "type": "identifier",
-          "named": true
-        },
-        {
           "type": "index_expression",
           "named": true
         },
@@ -764,9 +810,18 @@
         {
           "type": "unary_expression",
           "named": true
+        },
+        {
+          "type": "value_name",
+          "named": true
         }
       ]
     }
+  },
+  {
+    "type": "value_name",
+    "named": true,
+    "fields": {}
   },
   {
     "type": "!",
@@ -831,10 +886,6 @@
   {
     "type": "fn",
     "named": false
-  },
-  {
-    "type": "identifier",
-    "named": true
   },
   {
     "type": "let",

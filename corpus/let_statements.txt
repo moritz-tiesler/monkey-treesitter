@@ -8,7 +8,7 @@ let x = true;
 
 (source_file
 (value_assignment
-    (identifier)
+    (value_name)
     (boolean)))
 
 ====
@@ -21,7 +21,7 @@ let x = 2;
 
 (source_file
 (value_assignment
-    (identifier)
+    (value_name)
     (number)))
 
 ==============
@@ -34,8 +34,8 @@ let x = b;
 
 (source_file
 (value_assignment
-    (identifier)
-    (identifier)))
+    (value_name)
+    (value_name)))
     
 ===
 Assign function literal
@@ -46,15 +46,15 @@ let func = fn(a, b) { a + b; };
 ---
 (source_file
     (function_declaration
-        (identifier)
+        (function_name)
         (function
             (parameters
-                (identifier)
-                (identifier))
+                (parameter)
+                (parameter))
             (body
                 (binary_expression
-                    (identifier)
-                    (identifier))))))
+                    (value_name)
+                    (value_name))))))
                     
 ===
 Assign string literal
@@ -66,6 +66,6 @@ let str = "ab12_&%§";
 
 (source_file
     (value_assignment
-        (identifier)
+        (value_name)
         (string_literal)))
 

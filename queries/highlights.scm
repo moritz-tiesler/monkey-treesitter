@@ -2,4 +2,4 @@
 "fn" @keyword
 "return" @keyword
 (number) @number
-(identifier) @constant
+(value_name) @constant
