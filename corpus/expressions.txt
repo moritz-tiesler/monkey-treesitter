@@ -124,18 +124,18 @@ arr.push(1, myVar, (1+2));
     (method_call
             (value_name)
             (function_call
-                (value_name)
+                (function_name)
                 (arguments)))
     (method_call
         (value_name)
         (function_call
-            (value_name)
+            (function_name)
             (arguments
                 (number))))
     (method_call
         (value_name)
         (function_call
-            (value_name)
+            (function_name)
             (arguments
                 (number)
                 (value_name)
@@ -155,12 +155,12 @@ myFunc(a, b) + 4;
 
 (source_file
     (function_call
-        (value_name)
+        (function_name)
         (arguments
             (value_name)
             (value_name)))
     (function_call
-        (value_name)
+        (function_name)
         (arguments
             (binary_expression
                 (number)
@@ -170,7 +170,7 @@ myFunc(a, b) + 4;
                 (number))))
     (binary_expression
         (function_call
-            (value_name)
+            (function_name)
             (arguments
                 (value_name)
                 (value_name)))
@@ -224,7 +224,7 @@ IIFE
 ===
 
 fn(a) {a;}(1);
-(fn(a, b) {a;})(1, b);
+fn(a, b) {a;}(1, b);
 
 ---
 

@@ -223,7 +223,7 @@
     },
     "_grouped_expression": {
       "type": "PREC_LEFT",
-      "value": 7,
+      "value": 9,
       "content": {
         "type": "SEQ",
         "members": [
@@ -369,15 +369,33 @@
       "type": "PREC",
       "value": 7,
       "content": {
-        "type": "SEQ",
+        "type": "CHOICE",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "_expression"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "function_name"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "arguments"
+              }
+            ]
           },
           {
-            "type": "SYMBOL",
-            "name": "arguments"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "function"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "arguments"
+              }
+            ]
           }
         ]
       }
@@ -679,6 +697,10 @@
     [
       "function_name",
       "declaration_name"
+    ],
+    [
+      "function_name",
+      "value_name"
     ]
   ],
   "precedences": [],

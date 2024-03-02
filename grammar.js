@@ -9,13 +9,15 @@ const
     METHOD: 6,
     CALL: 7,
     INDEX: 8,
+    PARENTH: 9
   }
 
 module.exports = grammar({
   name: 'monkeylang',
 
   conflicts : $ => [
-    [$.function_name, $.declaration_name]
+    [$.function_name, $.declaration_name],
+    [$.function_name, $.value_name]
   ],
 
   rules: {
@@ -84,7 +86,7 @@ module.exports = grammar({
       prec.left(PREC.SUM, seq($._expression, '+', $._expression)),
     ),
     
-    _grouped_expression : $ => prec.left(PREC.CALL, seq('(', $._expression, ')')),
+    _grouped_expression : $ => prec.left(PREC.PARENTH, seq('(', $._expression, ')')),
 
     function: $ => seq(
       "fn",
@@ -122,10 +124,17 @@ module.exports = grammar({
 
     _statement_list: $ => repeat1($._statement),
     
-    function_call : $ => prec(PREC.CALL,seq(
-      $._expression,
-      $.arguments
-    )), 
+    function_call : $ => prec(PREC.CALL,
+      choice(
+        seq(
+          $.function_name,
+          $.arguments
+          ),
+        seq(
+          $.function,
+          $.arguments
+          )
+      )), 
     
     method_call : $ => prec(PREC.METHOD, seq(
       $._expression,
