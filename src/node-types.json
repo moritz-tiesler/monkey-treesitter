@@ -248,6 +248,11 @@
     }
   },
   {
+    "type": "declaration_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "function",
     "named": true,
     "fields": {},
@@ -777,6 +782,10 @@
         },
         {
           "type": "boolean",
+          "named": true
+        },
+        {
+          "type": "declaration_name",
           "named": true
         },
         {

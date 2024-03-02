@@ -15,7 +15,7 @@ module.exports = grammar({
   name: 'monkeylang',
 
   conflicts : $ => [
-    [$.function_name, $.value_name]
+    [$.function_name, $.declaration_name]
   ],
 
   rules: {
@@ -46,16 +46,16 @@ module.exports = grammar({
     
     value_assignment: $ => seq(
       'let',
-      $.value_name,
+      $.declaration_name,
       '=',
       $._expression,
       ";"
     ),
 
+    declaration_name : $ => $._identifier,
+
     value_name: $ => $._identifier,
 
-
-    
     _expression_statement: $ => seq(
       $._expression,
       ";"

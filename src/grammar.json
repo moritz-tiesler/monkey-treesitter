@@ -80,7 +80,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "value_name"
+          "name": "declaration_name"
         },
         {
           "type": "STRING",
@@ -95,6 +95,10 @@
           "value": ";"
         }
       ]
+    },
+    "declaration_name": {
+      "type": "SYMBOL",
+      "name": "_identifier"
     },
     "value_name": {
       "type": "SYMBOL",
@@ -674,7 +678,7 @@
   "conflicts": [
     [
       "function_name",
-      "value_name"
+      "declaration_name"
     ]
   ],
   "precedences": [],
