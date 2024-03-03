@@ -19,7 +19,14 @@ module.exports = grammar({
   ],
 
   rules: {
-    source_file: $ => repeat($._statement),
+    source_file: $ => repeat($._top_level_statement),
+
+    _top_level_statement : $ => seq(
+      choice(
+        $.let_statement,
+        $._expression_statement
+    )),
+
     _statement: $ => choice(
       $.let_statement,
       $._expression_statement,
@@ -33,13 +40,13 @@ module.exports = grammar({
       field("left", $.identifier),
       "=",
       field("right", $._expression),
-      ";"
+      choice(";", $._newline)
     ),
 
 
     _expression_statement: $ => seq(
       $._expression,
-      ";"
+      optional(choice(";", $._newline))
     ),
 
     _expression: $ => choice(
@@ -91,8 +98,7 @@ module.exports = grammar({
     
     return_statement: $ => seq(
       "return",
-      $._expression,
-      ";"
+      $._expression_statement,
     ),
 
     _block_statement: $ => seq(
@@ -184,5 +190,6 @@ module.exports = grammar({
     boolean: $ => /(true|false)/,
     _string : $ => /[^\s^"]+/,
     identifier: $ => /[a-zA-Z_]+/,
+    _newline : $ => "\n"
   }
 });
