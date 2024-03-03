@@ -9,7 +9,7 @@ a + 3;
 
 (source_file
     (binary_expression
-        (value_name) (number))
+        (identifier) (number))
     (binary_expression
         (number) (number)))
 ===
@@ -31,26 +31,26 @@ myArr[1] + 1 * 3;
         (number))
     (binary_expression
         (binary_expression
-            (value_name)
+            (identifier)
             (binary_expression
                 (number) (number)))
         (unary_expression
-            (value_name)))
+            (identifier)))
     (binary_expression
         (binary_expression
-            (value_name)
-            (value_name))
+            (identifier)
+            (identifier))
         (number))
     (binary_expression
         (binary_expression
             (number)
             (binary_expression
-                (value_name)
-                (value_name)))
+                (identifier)
+                (identifier)))
         (number))
     (binary_expression
         (index_expression
-            (value_name)
+            (identifier)
             (number))
         (binary_expression
             (number)
@@ -70,7 +70,7 @@ Unary expresssion
     (unary_expression
         (number))
     (unary_expression
-        (value_name))
+        (identifier))
     (unary_expression
         (binary_expression
             (number)
@@ -81,10 +81,10 @@ Unary expresssion
         (number)))
 
 ===
-Funtion literals
+Function literals
 ===
 
-fn(a, b) { a + b; };
+fn(true, b) { a + b; };
 fn(a, b) {
     return a + b;
 };
@@ -94,21 +94,25 @@ fn(a, b) {
 (source_file
     (function
         (parameters
-            (parameter)
-            (parameter))
+            (parameter
+                (identifier))
+            (parameter
+                (identifier)))
         (body
             (binary_expression
-                (value_name)
-                (value_name))))
+                (identifier)
+                (identifier))))
     (function
             (parameters
-                (parameter)
-                (parameter))
+                (parameter 
+                    (identifier))
+                (parameter
+                    (identifier)))
             (body
                 (return_statement
                     (binary_expression
-                        (value_name)
-                        (value_name))))))
+                        (identifier)
+                        (identifier))))))
                         
 ===
 Method Calls
@@ -122,23 +126,23 @@ arr.push(1, myVar, (1+2));
 
 (source_file
     (method_call
-            (value_name)
+            (identifier)
             (function_call
-                (function_name)
+                (identifier)
                 (arguments)))
     (method_call
-        (value_name)
+        (identifier)
         (function_call
-            (function_name)
+            (identifier)
             (arguments
                 (number))))
     (method_call
-        (value_name)
+        (identifier)
         (function_call
-            (function_name)
+            (identifier)
             (arguments
                 (number)
-                (value_name)
+                (identifier)
                 (binary_expression
                     (number)
                     (number))))))
@@ -155,12 +159,12 @@ myFunc(a, b) + 4;
 
 (source_file
     (function_call
-        (function_name)
+        (identifier)
         (arguments
-            (value_name)
-            (value_name)))
+            (identifier)
+            (identifier)))
     (function_call
-        (function_name)
+        (identifier)
         (arguments
             (binary_expression
                 (number)
@@ -170,10 +174,10 @@ myFunc(a, b) + 4;
                 (number))))
     (binary_expression
         (function_call
-            (function_name)
+            (identifier)
             (arguments
-                (value_name)
-                (value_name)))
+                (identifier)
+                (identifier)))
         (number)))
 
 ===
@@ -188,10 +192,10 @@ Array literals
     (array_literal
         (number)
         (boolean)
-        (value_name)
+        (identifier)
         (binary_expression
             (number)
-            (value_name))))
+            (identifier))))
 
 ===
 Index expresssion
@@ -205,13 +209,13 @@ myArr[1+a];
 
 (source_file
     (index_expression
-        (value_name)
+        (identifier)
         (number))
     (index_expression
-        (value_name)
+        (identifier)
         (binary_expression
             (number)
-            (value_name)))
+            (identifier)))
     (index_expression
         (array_literal
             (number)
@@ -232,21 +236,24 @@ fn(a, b) {a;}(1, b);
     (function_call
         (function
             (parameters
-                (parameter))
+                (parameter 
+                    (identifier)))
             (body
-                (value_name)))
+                (identifier)))
         (arguments
             (number)))
     (function_call
         (function
             (parameters
-                (parameter)
-                (parameter))
+                (parameter 
+                    (identifier))
+                (parameter
+                    (identifier)))
             (body
-                (value_name)))
+                (identifier)))
         (arguments
             (number)
-            (value_name))))
+            (identifier))))
             
 ===
 Hash literal
@@ -262,8 +269,8 @@ Hash literal
             (number)
             (number))
         (kv_pair
-            (value_name)
-            (value_name))
+            (identifier)
+            (identifier))
         (kv_pair
             (boolean)
             (boolean))

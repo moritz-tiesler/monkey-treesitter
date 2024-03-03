@@ -16,47 +16,26 @@ module.exports = grammar({
   name: 'monkeylang',
 
   conflicts : $ => [
-    [$.function_name, $.declaration_name],
-    [$.function_name, $.value_name]
   ],
 
   rules: {
     source_file: $ => repeat($._statement),
     _statement: $ => choice(
-      $._let_statement,
+      $.let_statement,
       $._expression_statement,
       $.return_statement,
       $._block_statement
     ),
 
     
-    _let_statement: $ => choice(
-      $.function_declaration,
-      $.value_assignment,
-    ),
-    
-    
-    function_declaration: $ => seq(
-      'let',
-      $.function_name,
+    let_statement: $ => seq(
+      "let",
+      field("left", $.identifier),
       "=",
-      $.function,
+      field("right", $._expression),
       ";"
     ),
 
-    function_name: $ => $._identifier,
-    
-    value_assignment: $ => seq(
-      'let',
-      $.declaration_name,
-      '=',
-      $._expression,
-      ";"
-    ),
-
-    declaration_name : $ => $._identifier,
-
-    value_name: $ => $._identifier,
 
     _expression_statement: $ => seq(
       $._expression,
@@ -66,7 +45,6 @@ module.exports = grammar({
     _expression: $ => choice(
       $.number,
       $.boolean,
-      $.value_name,
       $.function_call,
       $.method_call,
       $.unary_expression,
@@ -77,6 +55,7 @@ module.exports = grammar({
       $.index_expression,
       $.hash_literal,
       $.string_literal,
+      $.identifier
       // ...
     ),
 
@@ -103,7 +82,7 @@ module.exports = grammar({
     _parameter_list: $ => repeat1($.parameter),
 
     parameter: $ => seq(
-      $._identifier,
+      $.identifier,
       optional(",")
     ),
 
@@ -127,7 +106,7 @@ module.exports = grammar({
     function_call : $ => prec(PREC.CALL,
       choice(
         seq(
-          $.function_name,
+          $.identifier,
           $.arguments
           ),
         seq(
@@ -204,6 +183,6 @@ module.exports = grammar({
     number: $ => /\d+/,
     boolean: $ => /(true|false)/,
     _string : $ => /[^\s^"]+/,
-    _identifier: $ => /[a-zA-Z_]+/,
+    identifier: $ => /[a-zA-Z_]+/,
   }
 });
