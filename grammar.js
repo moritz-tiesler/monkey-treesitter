@@ -40,7 +40,7 @@ module.exports = grammar({
       field("left", $.identifier),
       "=",
       field("right", $._expression),
-      choice(";", $._newline)
+      optional(choice(";", $._newline))
     ),
 
 
@@ -62,10 +62,30 @@ module.exports = grammar({
       $.index_expression,
       $.hash_literal,
       $.string_literal,
-      $.identifier
+      $.identifier,
+      $.if_expression
       // ...
     ),
 
+    if_expression: $ => seq(
+      "if",
+      $.condition,
+      $.consequence,
+      optional($.alternative)
+    ),
+
+    condition: $ => seq(
+      "(",
+      $._expression,
+      ")"
+    ),
+    
+    consequence : $ => $._block_statement,
+    
+    alternative : $ => seq(
+      "else", 
+      $._block_statement  
+    ),
 
     binary_expression: $ => choice(
       prec.left(PREC.PRODUCT, seq($._expression, '*', $._expression)),

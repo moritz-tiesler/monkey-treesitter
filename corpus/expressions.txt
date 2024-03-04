@@ -359,3 +359,34 @@ String literals
 
 (source_file
     (string_literal))
+
+===
+If Expressions
+===
+if (true) {1} else {2}
+if (!a) {return a} else {return b}
+if (b) {b}
+---
+(source_file
+    (if_expression
+        (condition
+            (boolean))
+        (consequence
+            (number))
+        (alternative
+            (number)))
+    (if_expression
+        (condition
+            (unary_expression
+                (identifier)))
+        (consequence
+            (return_statement
+                (identifier)))
+        (alternative
+            (return_statement
+                (identifier))))
+    (if_expression
+        (condition
+            (identifier))
+        (consequence
+            (identifier))))

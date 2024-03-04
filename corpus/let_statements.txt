@@ -63,7 +63,6 @@ Assign string literal
 ===
 
 let str = "ab12_&%§"
-
 ---
 
 (source_file
