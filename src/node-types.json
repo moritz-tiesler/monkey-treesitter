@@ -851,7 +851,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": false,
+      "required": true,
       "types": [
         {
           "type": "array_literal",
@@ -1077,6 +1077,10 @@
   },
   {
     "type": ".",
+    "named": false
+  },
+  {
+    "type": "/",
     "named": false
   },
   {

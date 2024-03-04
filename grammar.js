@@ -89,7 +89,9 @@ module.exports = grammar({
 
     binary_expression: $ => choice(
       prec.left(PREC.PRODUCT, seq($._expression, '*', $._expression)),
+      prec.left(PREC.PRODUCT, seq($._expression, '/', $._expression)),
       prec.left(PREC.SUM, seq($._expression, '+', $._expression)),
+      prec.left(PREC.SUM, seq($._expression, '-', $._expression)),
       prec.left(PREC.LESSGREATER, seq($._expression, '<', $._expression)),
       prec.left(PREC.LESSGREATER, seq($._expression, '>', $._expression)),
       prec.left(PREC.LESSGREATER, seq($._expression, '<=', $._expression)),
