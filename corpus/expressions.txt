@@ -9,9 +9,9 @@ a + 3
 
 (source_file
     (binary_expression
-        (identifier) (number))
+        (identifier) (PLUS) (number))
     (binary_expression
-        (number) (number)))
+        (number) (MUL) (number)))
 ===
 Precedence
 ===
@@ -30,46 +30,64 @@ a > 3 == b <= 2
     (binary_expression
         (unary_expression
             (number))
+        (PLUS)
         (number))
     (binary_expression
         (binary_expression
             (identifier)
+            (PLUS)
             (binary_expression
-                (number) (number)))
+                (number)
+                (MUL)
+                (number)))
+        (MINUS)
         (unary_expression
             (identifier)))
     (binary_expression
         (binary_expression
             (identifier)
+            (PLUS)
             (identifier))
+        (MUL)
         (number))
     (binary_expression
         (binary_expression
             (number)
+            (PLUS)
             (binary_expression
                 (identifier)
+                (PLUS)
                 (identifier)))
+        (PLUS)
         (number))
     (binary_expression
         (index_expression
             (identifier)
             (number))
+        (PLUS)
         (binary_expression
             (number)
+            (DIV)
             (number)))
     (binary_expression
         (binary_expression
             (identifier)
+            (PLUS)
             (number))
+        (EQ)
         (binary_expression
             (identifier)
+            (PLUS)
             (number)))
     (binary_expression
         (binary_expression
             (identifier)
+            (GT)
             (number))
+        (EQ)
         (binary_expression
             (identifier)
+            (LTE)
             (number))))
 ===
 Unary expresssion
@@ -90,10 +108,12 @@ Unary expresssion
     (unary_expression
         (binary_expression
             (number)
+            (PLUS)
             (number)))
     (binary_expression
         (unary_expression
             (number))
+        (PLUS)
         (number)))
 
 ===
@@ -125,6 +145,7 @@ fn(a) {a}
         (body
             (binary_expression
                 (identifier)
+                (PLUS)
                 (identifier))))
     (function
             (parameters
@@ -136,6 +157,7 @@ fn(a) {a}
                 (return_statement
                     (binary_expression
                         (identifier)
+                        (PLUS)
                         (identifier)))))
     (function
             (parameters
@@ -150,6 +172,7 @@ fn(a) {a}
                 (return_statement
                     (binary_expression
                         (identifier)
+                        (PLUS)
                         (identifier)))))
     (function
         (parameters)
@@ -193,6 +216,7 @@ arr.push(1, myVar, (1+2))
                 (identifier)
                 (binary_expression
                     (number)
+                    (PLUS)
                     (number))))))
 
 ===
@@ -216,9 +240,11 @@ myFunc(a, b) + 4
         (arguments
             (binary_expression
                 (number)
+                (PLUS)
                 (number))
             (binary_expression
                 (number)
+                (PLUS)
                 (number))))
     (binary_expression
         (function_call
@@ -226,6 +252,7 @@ myFunc(a, b) + 4
             (arguments
                 (identifier)
                 (identifier)))
+        (PLUS)
         (number)))
 
 ===
@@ -243,6 +270,7 @@ Array literals
         (identifier)
         (binary_expression
             (number)
+            (PLUS)
             (identifier))))
 
 ===
@@ -263,6 +291,7 @@ myArr[1+a]
         (identifier)
         (binary_expression
             (number)
+            (PLUS)
             (identifier)))
     (index_expression
         (array_literal
@@ -325,6 +354,7 @@ Hash literal
         (kv_pair
             (binary_expression
                 (number)
+                (PLUS)
                 (number))
             (number))))
 
@@ -359,6 +389,7 @@ Hash Index
                     (number)))
             (binary_expression
                 (number)
+                (PLUS)
                 (number)))
      (index_expression
             (hash_literal
@@ -411,6 +442,7 @@ if (a == true) {a}
         (condition
             (binary_expression
                 (identifier)
+                (EQ)
                 (boolean)))
         (consequence
             (identifier))))

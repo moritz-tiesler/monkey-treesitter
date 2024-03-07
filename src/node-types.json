@@ -1,5 +1,10 @@
 [
   {
+    "type": "MINUS",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "alternative",
     "named": true,
     "fields": {},
@@ -204,6 +209,42 @@
       "multiple": true,
       "required": true,
       "types": [
+        {
+          "type": "DIV",
+          "named": true
+        },
+        {
+          "type": "EQ",
+          "named": true
+        },
+        {
+          "type": "GT",
+          "named": true
+        },
+        {
+          "type": "GTE",
+          "named": true
+        },
+        {
+          "type": "LT",
+          "named": true
+        },
+        {
+          "type": "LTE",
+          "named": true
+        },
+        {
+          "type": "MINUS",
+          "named": true
+        },
+        {
+          "type": "MUL",
+          "named": true
+        },
+        {
+          "type": "PLUS",
+          "named": true
+        },
         {
           "type": "array_literal",
           "named": true
@@ -851,7 +892,7 @@
     "fields": {},
     "children": {
       "multiple": false,
-      "required": true,
+      "required": false,
       "types": [
         {
           "type": "array_literal",
@@ -1060,14 +1101,6 @@
     "named": false
   },
   {
-    "type": "*",
-    "named": false
-  },
-  {
-    "type": "+",
-    "named": false
-  },
-  {
     "type": ",",
     "named": false
   },
@@ -1080,10 +1113,6 @@
     "named": false
   },
   {
-    "type": "/",
-    "named": false
-  },
-  {
     "type": ":",
     "named": false
   },
@@ -1092,28 +1121,40 @@
     "named": false
   },
   {
-    "type": "<",
-    "named": false
-  },
-  {
-    "type": "<=",
-    "named": false
-  },
-  {
     "type": "=",
     "named": false
   },
   {
-    "type": "==",
-    "named": false
+    "type": "DIV",
+    "named": true
   },
   {
-    "type": ">",
-    "named": false
+    "type": "EQ",
+    "named": true
   },
   {
-    "type": ">=",
-    "named": false
+    "type": "GT",
+    "named": true
+  },
+  {
+    "type": "GTE",
+    "named": true
+  },
+  {
+    "type": "LT",
+    "named": true
+  },
+  {
+    "type": "LTE",
+    "named": true
+  },
+  {
+    "type": "MUL",
+    "named": true
+  },
+  {
+    "type": "PLUS",
+    "named": true
   },
   {
     "type": "[",

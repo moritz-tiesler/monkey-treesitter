@@ -265,8 +265,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": "*"
+                "type": "SYMBOL",
+                "name": "MUL"
               },
               {
                 "type": "SYMBOL",
@@ -286,8 +286,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": "/"
+                "type": "SYMBOL",
+                "name": "DIV"
               },
               {
                 "type": "SYMBOL",
@@ -307,8 +307,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": "+"
+                "type": "SYMBOL",
+                "name": "PLUS"
               },
               {
                 "type": "SYMBOL",
@@ -328,8 +328,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": "-"
+                "type": "SYMBOL",
+                "name": "MINUS"
               },
               {
                 "type": "SYMBOL",
@@ -349,8 +349,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": "<"
+                "type": "SYMBOL",
+                "name": "LT"
               },
               {
                 "type": "SYMBOL",
@@ -370,8 +370,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": ">"
+                "type": "SYMBOL",
+                "name": "GT"
               },
               {
                 "type": "SYMBOL",
@@ -391,8 +391,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": "<="
+                "type": "SYMBOL",
+                "name": "LTE"
               },
               {
                 "type": "SYMBOL",
@@ -412,8 +412,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": ">="
+                "type": "SYMBOL",
+                "name": "GTE"
               },
               {
                 "type": "SYMBOL",
@@ -433,8 +433,8 @@
                 "name": "_expression"
               },
               {
-                "type": "STRING",
-                "value": "=="
+                "type": "SYMBOL",
+                "name": "EQ"
               },
               {
                 "type": "SYMBOL",
@@ -444,6 +444,83 @@
           }
         }
       ]
+    },
+    "_operator": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "MUL"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "DIV"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "PLUS"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "MINUS"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "LT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "GT"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "LTE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "GTE"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "EQ"
+        }
+      ]
+    },
+    "MUL": {
+      "type": "STRING",
+      "value": "*"
+    },
+    "DIV": {
+      "type": "STRING",
+      "value": "/"
+    },
+    "PLUS": {
+      "type": "STRING",
+      "value": "+"
+    },
+    "MINUS": {
+      "type": "STRING",
+      "value": "-"
+    },
+    "LT": {
+      "type": "STRING",
+      "value": "<"
+    },
+    "GT": {
+      "type": "STRING",
+      "value": ">"
+    },
+    "LTE": {
+      "type": "STRING",
+      "value": "<="
+    },
+    "GTE": {
+      "type": "STRING",
+      "value": ">="
+    },
+    "EQ": {
+      "type": "STRING",
+      "value": "=="
     },
     "_grouped_expression": {
       "type": "PREC_LEFT",

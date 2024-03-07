@@ -88,17 +88,39 @@ module.exports = grammar({
     ),
 
     binary_expression: $ => choice(
-      prec.left(PREC.PRODUCT, seq($._expression, '*', $._expression)),
-      prec.left(PREC.PRODUCT, seq($._expression, '/', $._expression)),
-      prec.left(PREC.SUM, seq($._expression, '+', $._expression)),
-      prec.left(PREC.SUM, seq($._expression, '-', $._expression)),
-      prec.left(PREC.LESSGREATER, seq($._expression, '<', $._expression)),
-      prec.left(PREC.LESSGREATER, seq($._expression, '>', $._expression)),
-      prec.left(PREC.LESSGREATER, seq($._expression, '<=', $._expression)),
-      prec.left(PREC.LESSGREATER, seq($._expression, '>=', $._expression)),
-      prec.left(PREC.EQUALS, seq($._expression, '==', $._expression)),
+      prec.left(PREC.PRODUCT, seq($._expression, $.MUL, $._expression)),
+      prec.left(PREC.PRODUCT, seq($._expression, $.DIV, $._expression)),
+      prec.left(PREC.SUM, seq($._expression, $.PLUS, $._expression)),
+      prec.left(PREC.SUM, seq($._expression, $.MINUS, $._expression)),
+      prec.left(PREC.LESSGREATER, seq($._expression, $.LT, $._expression)),
+      prec.left(PREC.LESSGREATER, seq($._expression, $.GT, $._expression)),
+      prec.left(PREC.LESSGREATER, seq($._expression, $.LTE, $._expression)),
+      prec.left(PREC.LESSGREATER, seq($._expression, $.GTE, $._expression)),
+      prec.left(PREC.EQUALS, seq($._expression, $.EQ, $._expression)),
 
     ),
+    
+    _operator : $ => choice(
+      $.MUL,
+      $.DIV,
+      $.PLUS,
+      $.MINUS,
+      $.LT,
+      $.GT,
+      $.LTE,
+      $.GTE,
+      $.EQ
+    ),
+    
+    MUL : $ => "*",
+    DIV : $ => "/",
+    PLUS : $ => "+",
+    MINUS : $ => "-",
+    LT : $ => "<",
+    GT : $ => ">",
+    LTE : $ => "<=",
+    GTE : $ => ">=",
+    EQ : $ => "==",
     
     _grouped_expression : $ => prec.left(PREC.PARENTH, seq('(', $._expression, ')')),
 
