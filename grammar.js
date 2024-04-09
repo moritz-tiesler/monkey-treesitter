@@ -7,15 +7,18 @@ const
     PRODUCT: 4,
     PREFIX: 5,
     METHOD: 6,
-    CALL: 7,
-    INDEX: 8,
-    PARENTH: 9
+    LAMBDA: 7,
+    CALL: 8,
+    INDEX: 9,
+    PARENTH: 10
   }
 
 module.exports = grammar({
   name: 'monkeylang',
 
   conflicts : $ => [
+    [$._expression, $.parameter],
+    [$.function_call]
   ],
 
   rules: {
@@ -58,6 +61,7 @@ module.exports = grammar({
       $.binary_expression,
       $._grouped_expression,
       $.function,
+      $.lambda,
       $.array_literal,
       $.index_expression,
       $.hash_literal,
@@ -159,17 +163,39 @@ module.exports = grammar({
 
     _statement_list: $ => repeat1($._statement),
     
+    lambda : $ => seq (
+      "{",
+      $.lambda_parameters,
+      "->",
+      $.lambda_body,
+      "}"
+    ),
+    
+    lambda_parameters : $ => $._parameter_list,
+    
+    lambda_body : $ => $._statement_list,
+    
     function_call : $ => prec(PREC.CALL,
-      choice(
-        seq(
-          $.identifier,
-          $.arguments
-          ),
-        seq(
-          $.function,
-          $.arguments
-          )
-      )), 
+          choice(
+            seq(
+              $.identifier,
+              $.arguments
+              ),
+            seq(
+              $.function,
+              $.arguments
+              ),
+            seq(
+              $.identifier,
+              $.arguments,
+              $.lambda
+            ),
+            seq(
+              $.identifier,
+              $.lambda
+            )
+        )
+    ), 
     
     method_call : $ => prec(PREC.METHOD, seq(
       $._expression,

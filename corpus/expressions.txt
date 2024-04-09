@@ -186,12 +186,25 @@ fn(a) {a}
             (identifier))))
                         
 ===
+Lambda literals
+===
+{x, y -> x + y}
+---
+(source_file
+    (lambda 
+        (lambda_parameters
+            (parameter (identifier))
+            (parameter (identifier)))
+        (lambda_body
+            (binary_expression (identifier) (PLUS) (identifier)))))
+===
 Method Calls
 ===
 
 arr.first()
 arr.push(1)
 arr.push(1, myVar, (1+2))
+arr.acc(1) {x -> x}
 
 ---
 
@@ -217,7 +230,20 @@ arr.push(1, myVar, (1+2))
                 (binary_expression
                     (number)
                     (PLUS)
-                    (number))))))
+                    (number)))))
+    (method_call
+        (identifier)
+        (function_call
+            (identifier)
+            (arguments
+                (number))
+            (lambda
+                (lambda_parameters
+                    (parameter
+                        (identifier)))
+                (lambda_body
+                    (identifier))))))
+
 
 ===
 Function Calls
@@ -226,6 +252,7 @@ Function Calls
 func(a, b)
 func(1 + 1, 2 + 2)
 myFunc(a, b) + 4
+myFunc(a) {x -> x}
 
 ---
 
@@ -253,7 +280,16 @@ myFunc(a, b) + 4
                 (identifier)
                 (identifier)))
         (PLUS)
-        (number)))
+        (number))
+    (function_call 
+        (identifier)
+        (arguments 
+            (identifier))
+            (lambda
+                (lambda_parameters
+                    (parameter (identifier)))
+                (lambda_body
+                    (identifier)))))
 
 ===
 Array literals

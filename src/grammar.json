@@ -164,6 +164,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "lambda"
+        },
+        {
+          "type": "SYMBOL",
           "name": "array_literal"
         },
         {
@@ -524,7 +528,7 @@
     },
     "_grouped_expression": {
       "type": "PREC_LEFT",
-      "value": 9,
+      "value": 10,
       "content": {
         "type": "SEQ",
         "members": [
@@ -662,9 +666,42 @@
         "name": "_statement"
       }
     },
+    "lambda": {
+      "type": "SEQ",
+      "members": [
+        {
+          "type": "STRING",
+          "value": "{"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lambda_parameters"
+        },
+        {
+          "type": "STRING",
+          "value": "->"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "lambda_body"
+        },
+        {
+          "type": "STRING",
+          "value": "}"
+        }
+      ]
+    },
+    "lambda_parameters": {
+      "type": "SYMBOL",
+      "name": "_parameter_list"
+    },
+    "lambda_body": {
+      "type": "SYMBOL",
+      "name": "_statement_list"
+    },
     "function_call": {
       "type": "PREC",
-      "value": 7,
+      "value": 8,
       "content": {
         "type": "CHOICE",
         "members": [
@@ -691,6 +728,36 @@
               {
                 "type": "SYMBOL",
                 "name": "arguments"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "arguments"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "lambda"
+              }
+            ]
+          },
+          {
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "lambda"
               }
             ]
           }
@@ -884,7 +951,7 @@
     },
     "index_expression": {
       "type": "PREC",
-      "value": 8,
+      "value": 9,
       "content": {
         "type": "SEQ",
         "members": [
@@ -994,7 +1061,15 @@
       "value": "\\s"
     }
   ],
-  "conflicts": [],
+  "conflicts": [
+    [
+      "_expression",
+      "parameter"
+    ],
+    [
+      "function_call"
+    ]
+  ],
   "precedences": [],
   "externals": [],
   "inline": [],
